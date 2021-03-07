@@ -1,0 +1,9 @@
+<div data-controller="chat-room" data-chat-room-sent-by="<%= cookies.encrypted[:user_name] %>" class="relative w-full ">
+  <div id="messageViewer" data-chat-room-target="messages" class="flex flex-col w-full h-screen overflow-y-auto pb-16 py-4 bg-gray-50">
+  </div><%# <div data-target="messages"> %>
+  <div class="absolute bottom-0 flex w-full p-3 bg-gray-100 shadow-md h-16">
+    <div class="items-center text-white bg-green-400 py-2 px-3 rounded-sm hover:bg-green-700 px-4 cursor-pointer" data-chat-room-target="subscribeBtn" data-action="click->chat-room#subscribeChatChannel">Subscribe & start chatting</div>
+    <input data-chat-room-target="messageBox" class="flex-grow border border-gray-200 p-2 mr-4 hidden" placeholder="Message">
+    <div class="flex items-center text-white bg-green-400 hover:bg-orange-700 px-4 cursor-pointer hidden" data-chat-room-target="sendMessageBtn" data-action="click->chat-room#sendMessage">Send</div>
+  </div>
+</div> <%# <div data-controller="chat-room"> %>

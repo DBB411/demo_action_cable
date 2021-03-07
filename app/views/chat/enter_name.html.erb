@@ -1,0 +1,13 @@
+<%# <%= javascript_pack_tag 'hello_world_channel' %> %>
+
+<h1 class="bg-blue-200 text-blue-700 text-2xl pt-8">Hello</h1>
+<%= form_with url: chat_enter_in_room_path, class: "flex flex-col w-full items-center py-32 px-4", method: :get do |form| %>
+  <div class="text-gray-800 text-xl">
+    Enter Your Name
+  </div>
+
+  <%= form.text_field :name, class: "w-64 border border-gray-200 p-2 m-4", placeholder: "Name", required: true %>
+  <%= form.submit "Enter in chat room", class: "bg-green-400 hover:bg-green-700 rounded-full px-5 py-3 text-white text-lg font-bold" %>
+<% end %>
+
+<div class="m-4 bg-gray-50 rounded" div-for="channel-data-recevied">
