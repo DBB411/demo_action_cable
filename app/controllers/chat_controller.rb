@@ -1,5 +1,19 @@
 
 class ChatController < ApplicationController
+  before_action :authenticate_user!
+
+  def index
+    @email = current_user.email
+  end
+
+  def start_public_chat
+
+  end
+
+  def start_private_chat
+
+  end
+
   # get /single-channel
   def room
     redirect_to(action: 'enter_name') if cookies.encrypted[:user_name].blank?
@@ -18,4 +32,5 @@ class ChatController < ApplicationController
 
     redirect_to(action: 'room')
   end
+
 end

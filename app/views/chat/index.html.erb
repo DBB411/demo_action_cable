@@ -1,0 +1,35 @@
+<style>
+.active-room {
+  display: block;
+}
+
+.disabled-room {
+  display: hidden;
+}
+</style>
+<div data-controller="chat-room" data-chat-room-email="<%= @email %>" data-chat-room-active-room-id="" class="flex flex-row h-screen">
+  <div data-chat-room-target="list" class="flex flex-col w-96 bg-gray-50 border-r border-gray-200">
+    <div id="start_chat_room_public" data-action="click->chat-room#startChatRoom" data-room-name="public" data-room-title="Public" class="w-full px-3 py-4">
+      <div data-room-name="public" data-room-title="Public">Public</div>
+      <div data-room-name="public" data-room-title="Public" class="text-sm text-gray-500">Click to start chat</div>
+    </div>
+    <div id="show_chat_room_public" data-action="click->chat-room#showChatRoom" data-room-name="public" class="w-full px-3 py-4" style="display: none;">
+      <div data-room-name="public">Public</div>
+    </div>
+    <% User.all.each do |user| %>
+      <% room_name = [@email, user.email].sort.join('_') %>
+      <div id="start_chat_room_<%=room_name%>" data-action="click->chat-room#startChatRoom" data-room-name="<%=room_name%>" class="w-full px-3 py-4">
+        <div data-room-name="<%=room_name%>" data-room-title="<%=user.email%>"><%=user.email%> <%= user == current_user ? " (You)" : "" %></div>
+        <div data-room-name="<%=room_name%>" data-room-title="<%=user.email%>" class="text-sm text-gray-500">Click to start chat</div>
+      </div>
+      <div id="show_chat_room_<%=room_name%>" data-action="click->chat-room#showChatRoom " data-room-name="<%=room_name%>" class="w-full px-3 py-4" style="display: none;">
+        <div data-room-name="<%=room_name%>"><%=user.email%> <%= user == current_user ? " (You)" : "" %></div>
+      </div>
+    <% end %>
+  </div>
+
+  <div id="rooms" class="w-full">
+  </div>
+
+
+</div> <%# <div data-controller="chat-room"> %>
