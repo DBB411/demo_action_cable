@@ -12,6 +12,8 @@ default: &default
 development:
   <<: *default
   database: demo_action_cable
+  userbame: dhruv_bhakta
+  password: password
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -23,5 +25,5 @@ test:
 production:
   <<: *default
   database: demo_action_cable
-  username: dhruvbbhakta
-  password: <%= ENV['DEMO_ACTION_CABLE_DATABASE_PASSWORD'] %>
+  username:
+  password:
